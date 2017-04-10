@@ -1,0 +1,15 @@
+<h2 class="page-header">Register</h2>
+{{#if errors}}
+    {{#each errors}}
+        <div class="alert alert-danger">
+            <i class="icon-remove-sign icon-large"></i> {{msg}}
+            <a href="#close" class="icon-remove"></a>
+        </div>
+    {{/each}}
+{{/if}}
+<div class="panel panel-default">
+  <div class="panel-body"><a href="/users/register_business">Business</a></div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body"><a href="/users/register_talent">Student</a></div>
+</div>
