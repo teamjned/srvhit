@@ -1,0 +1,112 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="css/login.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.4.3/velocity.min.js"></script>
+</head>
+<body>
+    <div class="page-wrap">
+        <div class="wrapper">
+            <form id="form1" runat="server" onsubmit="return false;" action="dologin.aspx" method="post">
+                <section id="login">
+                    <h1>SRVHIT</h1>
+                    <input type="text" placeholder="username" name="usr" />
+                    <input type="password" placeholder="password" name="pass" />
+                    <input type="submit" value="Log In" id="dologin" />
+                    <input type="submit" value="Sign Up" id="signupbtn" />
+                </section>
+                <section id="signup">
+                    <input type="submit" value="Student" id="studentbtn" />
+                    <input type="submit" value="Business" id="businessbtn" />
+                    <input type="submit" value="Back to Login" id="loginbtn" />
+                </section>
+                <section id="student" style="padding: 10px 10px; text-align: left;">
+                    <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 7px">
+                        <div style="width: 50%">
+                            <label for="fname">First Name</label>
+                            <input type="text" name="fname" placeholder="John" style="width: 100%; margin: 2px 0 0 0" />
+                        </div>
+                        <div style="width: 50%">
+                            <label for="lname">Last Name</label>
+                            <input type="text" name="lname" placeholder="Doe" style="width: 100%; margin: 2px 0 0 0" />
+                        </div>
+                    </div>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" placeholder="doej@csus.edu" style="width: 100%; margin: 2px 0 0 0" />
+                    <input type="submit" value="Submit" id="signupstudent" style="display: block; margin: 10px auto 0 auto" />
+                </section>
+                <section id="business" style="padding: 10px 10px; text-align: left;">
+                    <label for="name">Business Name</label>
+                    <input type="text" name="name" style="width: 100%; margin: 2px 0 0 0" />
+                    <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 7px">
+                        <div style="width: 50%">
+                            <label for="fname">First Name</label>
+                            <input type="text" name="fname" placeholder="John" style="width: 100%; margin: 2px 0 0 0" />
+                        </div>
+                        <div style="width: 50%">
+                            <label for="lname">Last Name</label>
+                            <input type="text" name="lname" placeholder="Doe" style="width: 100%; margin: 2px 0 0 0" />
+                        </div>
+                    </div>
+                    <label for="email">Contact Email</label>
+                    <input type="text" name="email" placeholder="doej@csus.edu" style="width: 100%; margin: 2px 0 0 0" />
+                    <input type="submit" value="Submit" id="signupbusiness" style="display: block; margin: 10px auto 0 auto" />
+                </section>
+            </form>
+        </div>
+    </div>
+    <script>
+        var login = get('login'), signup = get('signup');
+        get('form1').style['height'] = (login.scrollHeight + 10) + 'px';
+        get('signupbtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            transition(login, signup);
+            return false;
+        });
+
+        get('studentbtn').addEventListener('click', function () {
+            transition(signup, student);
+        });
+
+        get('businessbtn').addEventListener('click', function () {
+            transition(signup, business);
+        });
+
+        get('loginbtn').addEventListener('click', function () {
+            transition(signup, login);
+        });
+
+        get('dologin').addEventListener('click', function () {
+            Velocity(document.querySelector('body'), { opacity: 0 }, {
+                duration: 600,
+                complete: function () {
+                    get('form1').setAttribute('onsubmit', 'return true;');
+                    document.forms['form1'].submit();
+                }
+            });
+        });
+
+        function get(s) {
+            return document.getElementById(s);
+        }
+
+        function transition(hide, show) {
+            Velocity(hide, { opacity: 0 }, {
+                duration: 500,
+                complete: function () {
+                    hide.style['display'] = 'none';
+                }
+            });
+            setTimeout(function () {
+                show.style['display'] = 'inline-block';
+                Velocity(get('form1'), { height: (show.scrollHeight + 10) }, {
+                    duration: 200,
+                    complete: function () {
+                        Velocity(show, { opacity: 1 }, { duration: 500 });
+                    }
+                });
+            }, 300);
+        }
+    </script>
+</body>
+</html>
