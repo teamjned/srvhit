@@ -1,0 +1,80 @@
+﻿*, *::after, *::before {
+    box-sizing:border-box;
+}
+
+section {
+    display: inline-block;
+    width: 100%;
+}
+
+form {
+    width: 500px;
+    border-radius: 10px;
+    -webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    border: 5px outset #dbdbdb;
+    text-align: center;
+    background: #efefef;
+    -webkit-transition: height 0.2s; /* Safari */
+    transition: height 0.2s;
+    overflow: hidden;
+}
+
+input[type="text"], input[type="password"] {
+    width: 70%;
+    height: 40px;
+    border: 1px solid #dbdbdb;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    display: block;
+    margin: 10px auto 0 auto;
+    padding-left: 15px;
+}
+
+input[type="submit"] {
+    width: 50%;
+    height: 35px;
+    border: 3px outset #dbdbdb;
+    background-color: #dddddd;
+    display: block;
+    margin: 20px auto;
+    border-radius: 3px;
+}
+
+html {
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.page-wrap {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #043927; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, #043927); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, #043927); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, #043927); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, #043927); /* Standard syntax */
+}
+
+.wrapper {
+    padding-bottom: 30%;
+    display: inline-block;
+    align-self: center;
+}
+
+#signup, #student, #business {
+    opacity: 0;
+    display: none;
+}
